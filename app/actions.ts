@@ -8,16 +8,11 @@ let sql = postgres(process.env.DATABASE_URL || process.env.POSTGRES_URL!, {
   ssl: "allow",
 });
 
-// CREATE TABLE todos (
-//   id SERIAL PRIMARY KEY,
-//   text TEXT NOT NULL
-// );
-
 export async function createTodo(
   prevState: {
     message: string;
   },
-  formData: FormData,
+  formData: FormData
 ) {
   const schema = z.object({
     todo: z.string().min(1),
@@ -49,7 +44,7 @@ export async function deleteTodo(
   prevState: {
     message: string;
   },
-  formData: FormData,
+  formData: FormData
 ) {
   const schema = z.object({
     id: z.string().min(1),
